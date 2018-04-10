@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(trackIntent);
             }
         });
+        findViewById(R.id.now_playing_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nowPlayingIntent = new Intent(MainActivity.this, NowPlaying.class);
+                startActivity(nowPlayingIntent);
+            }
+        });
     }
 
 }
