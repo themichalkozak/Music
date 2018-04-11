@@ -10,10 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by themichalkozak on 10/04/2018.
@@ -39,7 +36,7 @@ public class AlbumAdapter extends ArrayAdapter<Album>{
         Album album = getItem(position);
 
         ImageView imageView = listItemView.findViewById(R.id.album_image);
-        imageView.setImageDrawable(album.getmDrawable());
+        imageView.setImageDrawable(album.getDrawable());
 
         TextView albumTextView = listItemView.findViewById(R.id.album_name);
         albumTextView.setText(album.getmAlbumName());

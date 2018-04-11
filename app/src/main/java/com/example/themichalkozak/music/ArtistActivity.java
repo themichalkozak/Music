@@ -1,5 +1,6 @@
 package com.example.themichalkozak.music;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,20 +10,26 @@ import java.util.ArrayList;
 
 public class ArtistActivity extends AppCompatActivity {
 
-    ArrayList<Artist> artists;
+    public static ArrayList<Artist> artists = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
 
-        artists = new ArrayList<Artist>();
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
 
-        for (int i=0;i<10;i++){
+        if(bundle != null){
 
-            artists.add(new Artist("default Artist",getDrawable(R.drawable.artistdrawable)));
+            artists = bundle.getParcelableArrayList("ARTIST_ALL");
+        }else{
+
+            for (int i=0;i<10;i++){
+
+                artists.add(new Artist("default Artist",getDrawable(R.drawable.artistdrawable)));
+            }
         }
-
 
         ArtistAdapter artistAdapter = new ArtistAdapter(this,artists);
 
