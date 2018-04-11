@@ -19,16 +19,15 @@ public class NowPlaying extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        if(bundle == null){
+        if(bundle != null) {
             TextView trackName = findViewById(R.id.track_name_now_playing);
-//            trackName.setText(bundle.getString("TRACK_EXTRA"));
-                trackName.setText("Just do it");
+            trackName.setText("Just do it");
 
             TextView artistName = findViewById(R.id.artist_name_now_playing);
             artistName.setText(bundle.getString("ARTIST_EXTRA"));
 
             Bitmap bitmap = bundle.getParcelable("ALBUM_EXTRA");
-            Drawable albumDrawable = new BitmapDrawable(getResources(),bitmap);
+            Drawable albumDrawable = new BitmapDrawable(getResources(), bitmap);
 
             ImageView albumImage = findViewById(R.id.image_now_playing);
             albumImage.setImageDrawable(albumDrawable);

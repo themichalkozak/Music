@@ -37,7 +37,7 @@
         android:layout_centerInParent="true"
         android:layout_below="@id/track_name-now_playing"
         android:id="@+id/seek_bar_now_playing"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content" />
 
     <ImageView
