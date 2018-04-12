@@ -6,34 +6,28 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final ArrayList<Artist> artistArrayList= new ArrayList<>();
+    public static final ArrayList<Artist> artistArrayList= new ArrayList<Artist>();
 
     public static final ArrayList<Album> albums = new ArrayList<Album>();
+
+    public static final ArrayList<Track> tracks = new ArrayList<Track>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable)));
-        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable)));
-        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable)));
-        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable)));
+        tracks.add(new Track("Masz to jak w banku","O.S.T.R.",getDrawable(R.drawable.songdrawable)));
 
-//       addArtist("O.S.T.R.",getDrawable(R.drawable.artistdrawable));
-//       addArtist("Małpa",getDrawable(R.drawable.artistdrawable));
+        albums.add(new Album("O.S.T.R","Masz to jak w Banku",getDrawable(R.drawable.albumdrawable),tracks));
 
-//        albums.add(artistArrayList.get(0).addAlbum("Tabasko",getDrawable(R.drawable.albumdrawable)));
-//        albums.add(artistArrayList.get(0).addAlbum("Tabasko",getDrawable(R.drawable.albumdrawable)));
-//        albums.add(artistArrayList.get(0).addAlbum("Tabasko",getDrawable(R.drawable.albumdrawable)));
-//        albums.add(artistArrayList.get(0).addAlbum("Tabasko",getDrawable(R.drawable.albumdrawable)));
-
-        albums.add(new Album("ostr","elod",getDrawable(R.drawable.songdrawable)));
+        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable),albums));
 
 
         findViewById(R.id.artist_button).setOnClickListener(new View.OnClickListener() {
@@ -61,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent trackIntent = new Intent(MainActivity.this,TrackActivity.class);
+                trackIntent.putParcelableArrayListExtra("TRACK_EXTRA",tracks);
                 startActivity(trackIntent);
             }
         });

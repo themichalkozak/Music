@@ -30,6 +30,14 @@ public  class Track implements Parcelable{
             return drawable;
         }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        dest.writeParcelable(bitmap,flags);
+        dest.writeString(mTrackName);
+        dest.writeString(mArtistName);
+
+    }
 
     @Override
     public int describeContents() {
@@ -37,19 +45,14 @@ public  class Track implements Parcelable{
     }
 
     private Track(Parcel in){
-        this.mTrackName = in.readString();
-        this.mArtistName = in.readString();
         Bitmap bitmap = (Bitmap)in.readParcelable(getClass().getClassLoader());
         drawable = new BitmapDrawable(bitmap);
+        this.mTrackName = in.readString();
+        this.mArtistName = in.readString();
+
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mTrackName);
-        dest.writeString(mArtistName);
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        dest.writeParcelable(bitmap,flags);
-    }
+
 
     public static final Parcelable.Creator<Track> CREATOR =
             new Parcelable.Creator<Track>(){

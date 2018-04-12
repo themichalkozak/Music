@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -25,14 +26,9 @@ public class AlbumActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         if(bundle != null){
-            final ArrayList<Album> albums = bundle.getParcelableArrayList("ALBUM_EXTRA");
-        }else{
-
-            final ArrayList<Album> albums = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                albums.add(new Album("Default Artist", "Default Album", getDrawable(R.drawable.albumdrawable)));
-
-            }
+            albums = bundle.getParcelableArrayList("ALBUM_EXTRA");
+            Album album= albums.get(0);
+            Log.i("Album Activity", "" + album.getmAlbumName());
         }
 
 

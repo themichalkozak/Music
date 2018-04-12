@@ -18,14 +18,19 @@ public class Album implements Parcelable{
     private String mArtistName;
     private String mAlbumName;
     private Drawable drawable;
-    private ArrayList<Track> tracks;
+    private ArrayList<Track> tracks = new ArrayList<Track>();
 
-    public Album(String mArtistName, String mAlbumName, Drawable drawable) {
+    public Album(String mArtistName, String mAlbumName, Drawable drawable, ArrayList<Track> tracks) {
         this.mArtistName = mArtistName;
         this.mAlbumName = mAlbumName;
         this.drawable = drawable;
-        this.tracks = new ArrayList<Track>();
+        this.tracks = tracks;
     }
+
+    public void addTrack(){
+        this.tracks.add(new Track("default","default",drawable));
+    }
+
 
     public String getmArtistName() {
         return mArtistName;
@@ -44,25 +49,27 @@ public class Album implements Parcelable{
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        dest.writeParcelable(bitmap,flags);
+        dest.writeString(mAlbumName);
+        dest.writeString(mArtistName);
+        dest.writeTypedList(this.tracks);
+
+
+
+    }
 
     private Album(Parcel in){
+        Bitmap bitmap = in.readParcelable(getClass().getClassLoader());
+        drawable = new BitmapDrawable(bitmap);
         this.mAlbumName = in.readString();
         this.mArtistName = in.readString();
-        Bitmap bitmap = in.readParcelable(getClass().getClassLoader());
-        this.drawable = new BitmapDrawable(bitmap);
 
         in.readTypedList(this.tracks,Track.CREATOR);
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mAlbumName);
-        dest.writeString(mArtistName);
-        dest.writeList(tracks);
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-
-        dest.writeParcelable(bitmap,flags);
-    }
 
     public static final Parcelable.Creator<Album> CREATOR =
             new Parcelable.Creator<Album>(){

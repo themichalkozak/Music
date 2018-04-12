@@ -21,7 +21,7 @@ public class NowPlaying extends AppCompatActivity {
 
         if(bundle != null) {
             TextView trackName = findViewById(R.id.track_name_now_playing);
-            trackName.setText("Just do it");
+            trackName.setText("");
 
             TextView artistName = findViewById(R.id.artist_name_now_playing);
             artistName.setText(bundle.getString("ARTIST_EXTRA"));

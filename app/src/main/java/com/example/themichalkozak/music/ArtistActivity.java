@@ -23,12 +23,6 @@ public class ArtistActivity extends AppCompatActivity {
         if(bundle != null){
 
             artists = bundle.getParcelableArrayList("ARTIST_ALL");
-        }else{
-
-            for (int i=0;i<10;i++){
-
-                artists.add(new Artist("default Artist",getDrawable(R.drawable.artistdrawable)));
-            }
         }
 
         ArtistAdapter artistAdapter = new ArtistAdapter(this,artists);

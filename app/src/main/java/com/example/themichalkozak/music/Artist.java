@@ -17,14 +17,10 @@ public class Artist implements Parcelable {
     private Drawable drawable;
     private ArrayList<Album> albums = new ArrayList<Album>();
 
-    public Artist(String mName, Drawable drawable) {
+    public Artist(String mName, Drawable drawable, ArrayList<Album> albums) {
         this.mName = mName;
         this.drawable = drawable;
-        this.albums = new ArrayList<Album>();
-    }
-
-    public Album addAlbum(String album, Drawable drawable){
-       return new Album(mName,album,drawable);
+        this.albums = albums;
     }
 
     public ArrayList<Album> getAlbums() {
@@ -44,22 +40,24 @@ public class Artist implements Parcelable {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        dest.writeParcelable(bitmap,flags);
+        dest.writeString(mName);
+
+        dest.writeTypedList(this.albums);
+    }
     public Artist(Parcel in){
-        this.mName = in.readString();
         Bitmap bitmap = (Bitmap)in.readParcelable(getClass().getClassLoader());
         drawable = new BitmapDrawable(bitmap);
+        this.mName = in.readString();
+
 
         in.readTypedList(this.albums,Album.CREATOR);
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mName);
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        dest.writeParcelable(bitmap,flags);
 
-        dest.writeTypedList(this.albums);
-    }
 
     public static final Parcelable.Creator<Artist> CREATOR =
             new Parcelable.Creator<Artist>(){
