@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,27 @@ public class Album implements Parcelable{
 
     public Drawable getDrawable() {
         return drawable;
+    }
+
+    public ArrayList<Track> getTracks() {
+        return tracks;
+    }
+
+    private Track findTrack(String trackName){
+        for(Track checkedTrack : this.tracks){
+            if(checkedTrack.equals(trackName)){
+                return checkedTrack;
+            }
+        }
+        return null;
+    }
+
+    public boolean addTrack(String trackName){
+        if(findTrack(trackName) == null) {
+            this.tracks.add(new Track(trackName, mArtistName, drawable));
+            return true;
+        }
+        return false;
     }
 
     @Override

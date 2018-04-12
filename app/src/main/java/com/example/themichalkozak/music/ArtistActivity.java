@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,8 +32,20 @@ public class ArtistActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(artistAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Artist artist = artists.get(position);
+
+                Intent albumIntent = new Intent(ArtistActivity.this,AlbumActivity.class);
+                albumIntent.putParcelableArrayListExtra("ALBUM_EXTRA",artist.getAlbums());
+                startActivity(albumIntent);
+            }
+        });
 
     }
+
+
 
 
 }

@@ -43,13 +43,11 @@ public class AlbumActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+
                 Album album = albums.get(position);
-                Bitmap bitmap = ((BitmapDrawable) album.getDrawable()).getBitmap();
-                Toast.makeText(AlbumActivity.this,album.getmArtistName(),Toast.LENGTH_SHORT).show();
-                Intent nowPlayingIntent = new Intent(AlbumActivity.this,NowPlaying.class);
-                nowPlayingIntent.putExtra("ALBUM_EXTRA",bitmap);
-                nowPlayingIntent.putExtra("ARTIST_EXTRA",album.getmArtistName());
-                startActivity(nowPlayingIntent);
+                Intent trackIntent = new Intent(AlbumActivity.this,TrackActivity.class);
+                trackIntent.putParcelableArrayListExtra("TRACK_EXTRA",album.getTracks());
+                startActivity(trackIntent);
 
             }
         });

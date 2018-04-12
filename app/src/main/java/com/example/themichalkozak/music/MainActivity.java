@@ -3,6 +3,7 @@ package com.example.themichalkozak.music;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tracks.add(new Track("Masz to jak w banku","O.S.T.R.",getDrawable(R.drawable.songdrawable)));
+        Artist artist = new Artist("O.S.T.R",getDrawable(R.drawable.artistdrawable));
+        Artist artist1 = new Artist("defalut",getDrawable(R.drawable.artistdrawable));
 
-        albums.add(new Album("O.S.T.R","Masz to jak w Banku",getDrawable(R.drawable.albumdrawable),tracks));
+        addArtist("O.S.T.R.",getDrawable(R.drawable.artistdrawable));
+        addArtist("Małpa", getDrawable(R.drawable.artistdrawable));
+        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumdrawable));
+        addAlbum("O.S.T.R.","JAzz dwa trzy..",getDrawable(R.drawable.albumdrawable));
+        addTrack("O.S.T.R.","Jazz dwa trzy..","Abstynent");
 
-        artistArrayList.add(new Artist("O.S.T.R.",getDrawable(R.drawable.artistdrawable),albums));
+
 
 
         findViewById(R.id.artist_button).setOnClickListener(new View.OnClickListener() {
@@ -68,11 +74,40 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//
-//    public ArrayList<Artist> addArtist(String name, Drawable drawable){
-//        ArrayList<Artist> artists = new ArrayList<>();
-//        artists.add(new Artist(name,drawable);
-//        return artists;
-//    }
+    public void addArtist(String artistName, Drawable drawable){
+        artistArrayList.add(new Artist(artistName,drawable));
+    }
+    public void addAlbum(String artistName, String album, Drawable drawable){
+        if(findArtist(artistName) != null){
+            Artist artist = findArtist(artistName);
+            artist.addAlbum(album,drawable);
+            albums.add(new Album(artistName,album,drawable, new ArrayList<Track>()));
+        }
+    }
+
+    public void addTrack(String artistName, String albumName, String trackName){
+        if(findArtist(artistName) != null){
+            Artist artist= findArtist(artistName);
+            if(artist.findAlbum(albumName) != null){
+                Album album = artist.findAlbum(albumName);
+                if(album.addTrack(trackName)){
+                    tracks.add(new Track(trackName,artistName,album.getDrawable()));
+                }
+            }
+
+        }
+    }
+
+
+    @Nullable
+    private Artist findArtist(String name){
+        for (Artist checkedArtist : artistArrayList){
+            if(checkedArtist.equals(name)){
+                return checkedArtist;
+            }
+        }
+        return null;
+    }
+
 
 }
