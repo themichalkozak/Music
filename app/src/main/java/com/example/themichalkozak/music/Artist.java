@@ -40,14 +40,7 @@ public class Artist implements Parcelable {
         return null;
     }
 
-    public boolean addTrack(String album, String track){
-        if(findAlbum(album) != null){
-            Album album1 = findAlbum(album);
-            if(album1.addTrack(track));
-            return true;
-        }
-        return false;
-    }
+
 
     public ArrayList<Album> getAlbums() {
         return albums;

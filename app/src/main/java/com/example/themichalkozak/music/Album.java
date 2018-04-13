@@ -28,9 +28,7 @@ public class Album implements Parcelable{
         this.tracks = tracks;
     }
 
-    public void addTrack(){
-        this.tracks.add(new Track("default","default",drawable));
-    }
+
 
 
     public String getmArtistName() {
@@ -48,6 +46,8 @@ public class Album implements Parcelable{
     public ArrayList<Track> getTracks() {
         return tracks;
     }
+
+
 
     private Track findTrack(String trackName){
         for(Track checkedTrack : this.tracks){

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.themichalkozak.music.MainActivity">
+    tools:context="com.example.themichalkozak.music.MainActivity"
+    android:background="@drawable/mainwalppaper">
 
     <TextView
+        android:background="@drawable/artisticonlarge"
         android:id="@+id/artist_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Artists"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center|bottom"
+        android:layout_margin="20dp"
         android:textAllCaps="true"
         android:textColor="#000"
         android:textSize="20sp"
@@ -21,25 +21,25 @@
 
     <TextView
         android:id="@+id/album_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Albums"
+        android:background="@drawable/albumicon"
+        android:layout_toRightOf="@id/artist_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center|bottom"
+        android:layout_margin="20dp"
         android:textAllCaps="true"
         android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
+        android:background="@drawable/songicon"
+        android:layout_below="@id/artist_button"
         android:id="@+id/track_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Tracks"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center|bottom"
+        android:layout_margin="20dp"
         android:textAllCaps="true"
         android:textColor="#000"
         android:textSize="20sp"
@@ -47,17 +47,18 @@
 
 
     <TextView
+        android:layout_below="@id/artist_button"
+        android:layout_toRightOf="@id/track_button"
+        android:background="@drawable/playbackground"
         android:id="@+id/now_playing_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="Now Playing"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center|bottom"
+        android:layout_margin="20dp"
         android:textAllCaps="true"
         android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="bold" />
 
 
-</LinearLayout>
+</RelativeLayout>

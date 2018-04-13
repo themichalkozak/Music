@@ -27,8 +27,8 @@ public class AlbumActivity extends AppCompatActivity {
 
         if(bundle != null){
             albums = bundle.getParcelableArrayList("ALBUM_EXTRA");
-            Album album= albums.get(0);
-            Log.i("Album Activity", "" + album.getmAlbumName());
+            String activityTitle = bundle.getString("ACTIVITY_EXTRA");
+            this.setTitle(activityTitle);
         }
 
 
@@ -47,6 +47,7 @@ public class AlbumActivity extends AppCompatActivity {
                 Album album = albums.get(position);
                 Intent trackIntent = new Intent(AlbumActivity.this,TrackActivity.class);
                 trackIntent.putParcelableArrayListExtra("TRACK_EXTRA",album.getTracks());
+                trackIntent.putExtra("ACTIVITY_EXTRA",album.getmAlbumName());
                 startActivity(trackIntent);
 
             }

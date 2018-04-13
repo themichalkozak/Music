@@ -1,5 +1,6 @@
 package com.example.themichalkozak.music;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -26,7 +27,10 @@ public class TrackActivity extends AppCompatActivity {
 
         if(bundle != null){
             trackArrayList = bundle.getParcelableArrayList("TRACK_EXTRA");
+            String activityTitle = bundle.getString("ACTIVITY_EXTRA");
+            this.setTitle(activityTitle);
         }
+
 
         final TrackAdapter trackAdapter = new TrackAdapter(this,trackArrayList);
 

@@ -24,16 +24,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Artist artist = new Artist("O.S.T.R",getDrawable(R.drawable.artistdrawable));
-        Artist artist1 = new Artist("defalut",getDrawable(R.drawable.artistdrawable));
 
-        addArtist("O.S.T.R.",getDrawable(R.drawable.artistdrawable));
-        addArtist("Małpa", getDrawable(R.drawable.artistdrawable));
-        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumdrawable));
-        addAlbum("O.S.T.R.","JAzz dwa trzy..",getDrawable(R.drawable.albumdrawable));
-        addTrack("O.S.T.R.","Jazz dwa trzy..","Abstynent");
+//        addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
+//        addArtist("Małpa", getDrawable(R.drawable.artisticon));
+//        addAlbum("Małpa","Kilka numerów o czymś",getDrawable(R.drawable.albumicon));
+//        addTrack("Małpa","Kilka numerów o czymś","Pozwól mi nie mówić nic");
+//        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
+//        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
+//        addAlbum("O.S.T.R.","Jazz dwa trzy..",getDrawable(R.drawable.albumicon));
+//        addTrack("O.S.T.R.","Jazz dwa trzy..","Abstynent");
+//        addTrack("O.S.T.R.","Jazz dwa trzy..","Szpiedzy tacy jak my");
+
+            addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
+            addArtist("Małpa",getDrawable(R.drawable.artisticon));
+            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
+            addTrack("Małpa","Pozwól mi nie mówić nic","Winner");
 
 
+        createAlbumList();
+        createTrackList();
 
 
         findViewById(R.id.artist_button).setOnClickListener(new View.OnClickListener() {
@@ -60,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.track_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent trackIntent = new Intent(MainActivity.this,TrackActivity.class);
                 trackIntent.putParcelableArrayListExtra("TRACK_EXTRA",tracks);
                 startActivity(trackIntent);
@@ -81,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         if(findArtist(artistName) != null){
             Artist artist = findArtist(artistName);
             artist.addAlbum(album,drawable);
-            albums.add(new Album(artistName,album,drawable, new ArrayList<Track>()));
         }
     }
 
@@ -91,23 +100,34 @@ public class MainActivity extends AppCompatActivity {
             if(artist.findAlbum(albumName) != null){
                 Album album = artist.findAlbum(albumName);
                 if(album.addTrack(trackName)){
-                    tracks.add(new Track(trackName,artistName,album.getDrawable()));
                 }
             }
 
         }
     }
-
-
-    @Nullable
     private Artist findArtist(String name){
         for (Artist checkedArtist : artistArrayList){
-            if(checkedArtist.equals(name)){
+            if(checkedArtist.getmName().equals(name)){
                 return checkedArtist;
             }
         }
         return null;
     }
 
+    public void createAlbumList(){
+        for(int i=0;i<artistArrayList.size();i++){
+            Artist artist = artistArrayList.get(i);
+            albums.addAll(artist.getAlbums());
+        }
+    }
 
+    public void createTrackList(){
+        for(int i=0;i<artistArrayList.size();i++){
+            Artist artist = artistArrayList.get(i);
+            for(int j=0;j<artist.getAlbums().size();j++) {
+                Album album = artist.getAlbums().get(j);
+                tracks.addAll(album.getTracks());
+            }
+        }
+    }
 }

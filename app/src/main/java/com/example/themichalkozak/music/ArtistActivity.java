@@ -39,6 +39,7 @@ public class ArtistActivity extends AppCompatActivity {
 
                 Intent albumIntent = new Intent(ArtistActivity.this,AlbumActivity.class);
                 albumIntent.putParcelableArrayListExtra("ALBUM_EXTRA",artist.getAlbums());
+                albumIntent.putExtra("ACTIVITY_EXTRA",artist.getmName());
                 startActivity(albumIntent);
             }
         });
