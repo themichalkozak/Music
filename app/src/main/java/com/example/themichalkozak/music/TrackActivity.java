@@ -44,13 +44,13 @@ public class TrackActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Track track = trackArrayList.get(position);
-                Bitmap bitmap = ((BitmapDrawable) track.getDrawable()).getBitmap();
+                String drawable = track.getDrawable();
 
 
                 Intent nowPlayingIntent = new Intent(TrackActivity.this,NowPlaying.class);
                 nowPlayingIntent.putExtra("TRACK_EXTRA",track.getmTrackName());
                 nowPlayingIntent.putExtra("ARTIST_EXTRA",track.getmArtistName());
-                nowPlayingIntent.putExtra("ALBUM_EXTRA",bitmap);
+                nowPlayingIntent.putExtra("ALBUM_EXTRA",drawable);
                 startActivity(nowPlayingIntent);
             }
         });

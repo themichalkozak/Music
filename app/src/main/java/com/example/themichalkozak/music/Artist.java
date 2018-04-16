@@ -3,6 +3,7 @@ package com.example.themichalkozak.music;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -14,16 +15,16 @@ import java.util.ArrayList;
 public class Artist implements Parcelable {
 
     private String mName;
-    private Drawable drawable;
+    private String drawable;
     private ArrayList<Album> albums = new ArrayList<Album>();
 
-    public Artist(String mName, Drawable drawable) {
+    public Artist(String mName, String drawable) {
         this.mName = mName;
         this.drawable = drawable;
         this.albums = new ArrayList<Album>();
     }
 
-    public final boolean addAlbum(String albumName, Drawable drawable) {
+    public final boolean addAlbum(String albumName, String drawable) {
         if(findAlbum(albumName) == null){
             this.albums.add(new Album(mName,albumName,drawable,new ArrayList<Track>()));
             return true;
@@ -50,7 +51,7 @@ public class Artist implements Parcelable {
         return mName;
     }
 
-    public Drawable getDrawable() {
+    public String getDrawable() {
         return drawable;
     }
 
@@ -61,16 +62,14 @@ public class Artist implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        dest.writeParcelable(bitmap, flags);
+        dest.writeString(drawable);
         dest.writeString(mName);
 
         dest.writeTypedList(this.albums);
     }
 
     public Artist(Parcel in) {
-        Bitmap bitmap = (Bitmap) in.readParcelable(getClass().getClassLoader());
-        drawable = new BitmapDrawable(bitmap);
+        this.drawable = in.readString();
         this.mName = in.readString();
 
 
