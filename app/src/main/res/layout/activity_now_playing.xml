@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.themichalkozak.music.NowPlaying">
+    tools:context="com.example.themichalkozak.music.NowPlaying"
+    android:background="@drawable/mainwalppaper">
 
 
     <ImageView
         android:layout_marginTop="40dp"
         android:id="@+id/image_now_playing"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:background="@android:color/holo_red_dark"/>
+        android:background="@drawable/album200x200"/>
 
     <TextView
         android:text="default Artist"

@@ -28,6 +28,9 @@ public class TrackActivity extends AppCompatActivity {
         if(bundle != null){
             trackArrayList = bundle.getParcelableArrayList("TRACK_EXTRA");
             String activityTitle = bundle.getString("ACTIVITY_EXTRA");
+            if(activityTitle == null){
+                activityTitle = "Tracks";
+            }
             this.setTitle(activityTitle);
         }
 

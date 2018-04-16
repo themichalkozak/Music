@@ -2,6 +2,7 @@ package com.example.themichalkozak.music;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -24,21 +28,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
-//        addArtist("Małpa", getDrawable(R.drawable.artisticon));
-//        addAlbum("Małpa","Kilka numerów o czymś",getDrawable(R.drawable.albumicon));
-//        addTrack("Małpa","Kilka numerów o czymś","Pozwól mi nie mówić nic");
-//        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
-//        addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
-//        addAlbum("O.S.T.R.","Jazz dwa trzy..",getDrawable(R.drawable.albumicon));
-//        addTrack("O.S.T.R.","Jazz dwa trzy..","Abstynent");
-//        addTrack("O.S.T.R.","Jazz dwa trzy..","Szpiedzy tacy jak my");
-
+//
             addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
             addArtist("Małpa",getDrawable(R.drawable.artisticon));
-            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
-            addTrack("Małpa","Pozwól mi nie mówić nic","Winner");
+//            addArtist("Edd Sheeran",getDrawable(R.drawable.artisticon));
+//
+//            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
+//            addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
+//            addAlbum("Edd Sheeran","Divide",getDrawable(R.drawable.albumicon));
+
+//        String ostr [] = getResources().getStringArray(R.array.ostr);
+//        String edSheeran [] = getResources().getStringArray(R.array.ed_sheeran_array);
+//        String malpa [] = getResources().getStringArray(R.array.malpa);
+//
+//        addArtist(ostr[0],getDrawable(R.drawable.artisticon));
+//        addArtist(malpa[0],getDrawable(R.drawable.artisticon));
+////        addArtist(edSheeran[0],getDrawable(R.drawable.artisticon));
+//
+//        addAlbum(edSheeran[0],edSheeran[1],getDrawable(R.drawable.albumicon));
+//        addAlbum(malpa[0],malpa[1],getDrawable(R.drawable.albumicon));
+//        addAlbum(ostr[0],ostr[1],getDrawable(R.drawable.albumicon));
+//
+//
+//
+//        for(int i=2;i<ostr.length;i++){
+//            addTrack(edSheeran[0],edSheeran[1],edSheeran[i]);
+//            addTrack(malpa[0],malpa[1],malpa[i]);
+//            addTrack(ostr[0],ostr[1],ostr[i]);
+//
+//        }
 
 
         createAlbumList();

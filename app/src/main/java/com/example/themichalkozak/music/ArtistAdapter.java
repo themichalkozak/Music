@@ -1,6 +1,7 @@
 package com.example.themichalkozak.music;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -35,8 +36,10 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
 
         Artist currentArtist = getItem(position);
 
+        Uri uri = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.artisticon);
+
         ImageView imageView = listItemView.findViewById(R.id.artist_image);
-        imageView.setImageDrawable(currentArtist.getDrawable());
+        imageView.setImageURI(uri);
 
         TextView nameArtist = listItemView.findViewById(R.id.artist_name);
         nameArtist.setText(currentArtist.getmName());

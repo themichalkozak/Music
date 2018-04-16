@@ -17,6 +17,7 @@ public class AlbumActivity extends AppCompatActivity {
 
     ArrayList<Album> albums = new ArrayList<Album>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,9 @@ public class AlbumActivity extends AppCompatActivity {
         if(bundle != null){
             albums = bundle.getParcelableArrayList("ALBUM_EXTRA");
             String activityTitle = bundle.getString("ACTIVITY_EXTRA");
+            if(activityTitle == null){
+                activityTitle = "Albums";
+            }
             this.setTitle(activityTitle);
         }
 

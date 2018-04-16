@@ -1,3 +1,73 @@
 <resources>
     <string name="app_name">Music player</string>
+
+    <string name="ostr">O.S.T.R.</string>
+    <string name="ostr_tabasko">Tabasko</string>
+    <string name="tabasko_track_1">Masz to jak w banku 2</string>
+    <string name="tabasko_track_2">To nie jest tak</string>
+    <string name="tabasko_track_3">Kochana Polsko</string>
+    <string name="tabasko_track_4">Szukam stylu</string>
+    <string name="tabasko_track_5">Zazdrość</string>
+    <string name="tabasko_track_6">Tabasko</string>
+    <string name="tabasko_track_7">$</string>
+
+    <string name="malpa">Małpa</string>
+    <string name="malpa_kilka">Kilka numerów o czymś</string>
+    <string name="kilka_track_1">Miałem to rzucić</string>
+    <string name="kilka_track_2">Pamiętaj kto</string>
+    <string name="kilka_track_3">Właśnie Ty</string>
+    <string name="kilka_track_4">Pozwól mi nie mówić nic</string>
+    <string name="kilka_track_5">Postaw na mnie</string>
+    <string name="kilka_track_6">Paznokcie</string>
+    <string name="kilka_track_7">5 element</string>
+    
+    <string name="ed_seheeran">Ed Sheeran</string>
+    <string name="ed_sheeran_divide">Divide</string>
+    <string name="divide_track_1">Eraser</string>
+    <string name="divide_track_2">Castle on the Hill</string>
+    <string name="divide_track_3">Dive</string>
+    <string name="divide_track_4">Shape of You</string>
+    <string name="divide_track_5">Perfect</string>
+    <string name="divide_track_6">Galway Girl</string>
+    <string name="divide_track_7">Happier</string>
+
+
+    <string-array name="ostr">
+        <item>@string/ostr</item>
+        <item>@string/ostr_tabasko</item>
+        <item>@string/tabasko_track_1</item>
+        <item>@string/tabasko_track_2</item>
+        <item>@string/tabasko_track_3</item>
+        <item>@string/tabasko_track_4</item>
+        <item>@string/tabasko_track_5</item>
+        <item>@string/tabasko_track_6</item>
+        <item>@string/tabasko_track_7</item>
+    </string-array>
+
+    <string-array name="malpa">
+        <item>@string/malpa</item>
+        <item>@string/malpa_kilka</item>
+        <item>@string/kilka_track_1</item>
+        <item>@string/kilka_track_2</item>
+        <item>@string/kilka_track_3</item>
+        <item>@string/kilka_track_4</item>
+        <item>@string/kilka_track_5</item>
+        <item>@string/kilka_track_6</item>
+        <item>@string/kilka_track_7</item>
+    </string-array>
+
+    <string-array name="ed_sheeran_array">
+        <item>@string/ed_seheeran</item>
+        <item>@string/ed_sheeran_divide</item>
+        <item>@string/divide_track_1</item>
+        <item>@string/divide_track_2</item>
+        <item>@string/divide_track_3</item>
+        <item>@string/divide_track_4</item>
+        <item>@string/divide_track_5</item>
+        <item>@string/divide_track_6</item>
+        <item>@string/divide_track_7</item>
+
+    </string-array>
+
+
 </resources>
