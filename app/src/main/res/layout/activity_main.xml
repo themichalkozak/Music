@@ -7,58 +7,89 @@
     tools:context="com.example.themichalkozak.music.MainActivity"
     android:background="@drawable/mainwalppaper">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+    <LinearLayout
+        android:id="@+id/main_heigher_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <TextView
-        android:background="@drawable/artisticonlarge"
+        android:background="@drawable/artist200x200"
         android:id="@+id/artist_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center|bottom"
-        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:text="artists"
         android:textAllCaps="true"
-        android:textColor="#000"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="#fff"
+        android:gravity="bottom|center"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/album_button"
-        android:background="@drawable/albumicon"
-        android:layout_toRightOf="@id/artist_button"
+        android:background="@drawable/album200x200"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center|bottom"
-        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:text="albums"
+        android:layout_margin="10dp"
         android:textAllCaps="true"
-        android:textColor="#000"
+        android:padding="10dp"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/main_lower_layout"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
     <TextView
-        android:background="@drawable/songicon"
-        android:layout_below="@id/artist_button"
+        android:background="@drawable/track200x200"
         android:id="@+id/track_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center|bottom"
-        android:layout_margin="20dp"
-        android:textAllCaps="true"
-        android:textColor="#000"
+        android:layout_margin="10dp"
+        android:text="tracks"
+        android:gravity="bottom|center"
         android:textSize="20sp"
+        android:layout_weight="1"
+        android:textAllCaps="true"
+        android:textColor="#fff"
         android:textStyle="bold" />
 
 
     <TextView
-        android:layout_below="@id/artist_button"
-        android:layout_toRightOf="@id/track_button"
-        android:background="@drawable/playbackground"
+        android:background="@drawable/play200x200"
         android:id="@+id/now_playing_button"
+        android:layout_weight="1"
         android:layout_width="150dp"
+        android:layout_margin="10dp"
+        android:text="now playing"
+        android:gravity="bottom|center"
         android:layout_height="150dp"
-        android:gravity="center|bottom"
-        android:layout_margin="20dp"
         android:textAllCaps="true"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+</LinearLayout>
+
+    </LinearLayout>
 
 
 </RelativeLayout>
