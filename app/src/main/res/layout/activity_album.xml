@@ -15,6 +15,7 @@
 
     <TextView
         android:id="@+id/artist_album_name"
+        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/album_image"
@@ -22,6 +23,7 @@
 
     <TextView
         android:id="@+id/album_name"
+        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/artist_album_name"
