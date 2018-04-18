@@ -7,17 +7,19 @@
 
     <ImageView
         android:id="@+id/track_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
 
     <TextView
         android:id="@+id/track_artist_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/track_image" />
+        android:layout_toEndOf="@id/track_image"
+        android:textColor="#fff"/>
 
     <TextView
         android:id="@+id/track_name"
+        android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/track_artist_name"

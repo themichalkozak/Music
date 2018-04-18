@@ -19,6 +19,7 @@ public class ArtistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
 
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
@@ -45,8 +46,5 @@ public class ArtistActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 
 }
