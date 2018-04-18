@@ -28,35 +28,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//
+
             addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
             addArtist("Małpa",getDrawable(R.drawable.artisticon));
-//            addArtist("Edd Sheeran",getDrawable(R.drawable.artisticon));
-//
-//            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
-//            addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
-//            addAlbum("Edd Sheeran","Divide",getDrawable(R.drawable.albumicon));
+            addArtist("Edd Sheeran",getDrawable(R.drawable.artisticon));
 
-//        String ostr [] = getResources().getStringArray(R.array.ostr);
-//        String edSheeran [] = getResources().getStringArray(R.array.ed_sheeran_array);
-//        String malpa [] = getResources().getStringArray(R.array.malpa);
-//
-//        addArtist(ostr[0],getDrawable(R.drawable.artisticon));
-//        addArtist(malpa[0],getDrawable(R.drawable.artisticon));
-////        addArtist(edSheeran[0],getDrawable(R.drawable.artisticon));
-//
-//        addAlbum(edSheeran[0],edSheeran[1],getDrawable(R.drawable.albumicon));
-//        addAlbum(malpa[0],malpa[1],getDrawable(R.drawable.albumicon));
-//        addAlbum(ostr[0],ostr[1],getDrawable(R.drawable.albumicon));
-//
-//
-//
-//        for(int i=2;i<ostr.length;i++){
-//            addTrack(edSheeran[0],edSheeran[1],edSheeran[i]);
-//            addTrack(malpa[0],malpa[1],malpa[i]);
-//            addTrack(ostr[0],ostr[1],ostr[i]);
-//
-//        }
+            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
+            addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
+            addAlbum("Edd Sheeran","Divide",getDrawable(R.drawable.albumicon));
+
+        String ostr [] = getResources().getStringArray(R.array.ostr);
+        String edSheeran [] = getResources().getStringArray(R.array.ed_sheeran_array);
+        String malpa [] = getResources().getStringArray(R.array.malpa);
+
+        addArtist(ostr[0],getDrawable(R.drawable.artisticon));
+        addArtist(malpa[0],getDrawable(R.drawable.artisticon));
+        addArtist(edSheeran[0],getDrawable(R.drawable.artisticon));
+
+        addAlbum(edSheeran[0],edSheeran[1],getDrawable(R.drawable.albumicon));
+        addAlbum(malpa[0],malpa[1],getDrawable(R.drawable.albumicon));
+        addAlbum(ostr[0],ostr[1],getDrawable(R.drawable.albumicon));
+
+
+
+        for(int i=2;i<ostr.length;i++){
+            addTrack(edSheeran[0],edSheeran[1],edSheeran[i]);
+            addTrack(malpa[0],malpa[1],malpa[i]);
+            addTrack(ostr[0],ostr[1],ostr[i]);
+
+        }
 
 
         createAlbumList();
