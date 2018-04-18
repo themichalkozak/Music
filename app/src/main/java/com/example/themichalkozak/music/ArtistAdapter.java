@@ -36,7 +36,8 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
 
         Artist currentArtist = getItem(position);
 
-        Uri uri = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.artisticon);
+        String drawable = currentArtist.getDrawable();
+        Uri uri = Uri.parse(drawable);
 
         ImageView imageView = listItemView.findViewById(R.id.artist_image);
         imageView.setImageURI(uri);

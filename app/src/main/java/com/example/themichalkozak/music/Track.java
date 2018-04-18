@@ -10,9 +10,9 @@ public  class Track implements Parcelable{
     
         private String mTrackName;
         private String mArtistName;
-        private Drawable drawable;
+        private String drawable;
     
-        public Track(String mTrackName, String mArtistName, Drawable drawable) {
+        public Track(String mTrackName, String mArtistName, String drawable) {
             this.mTrackName = mTrackName;
             this.mArtistName = mArtistName;
             this.drawable = drawable;
@@ -26,14 +26,13 @@ public  class Track implements Parcelable{
             return mArtistName;
         }
     
-        public Drawable getDrawable() {
+        public String getDrawable() {
             return drawable;
         }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        dest.writeParcelable(bitmap,flags);
+        dest.writeString(drawable);
         dest.writeString(mTrackName);
         dest.writeString(mArtistName);
 
@@ -45,8 +44,7 @@ public  class Track implements Parcelable{
     }
 
     private Track(Parcel in){
-        Bitmap bitmap = (Bitmap)in.readParcelable(getClass().getClassLoader());
-        drawable = new BitmapDrawable(bitmap);
+        this.drawable = in.readString();
         this.mTrackName = in.readString();
         this.mArtistName = in.readString();
 

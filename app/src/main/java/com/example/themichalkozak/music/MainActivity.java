@@ -28,26 +28,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Uri uriArtist = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.artisticon);
+        Uri uriAlbum = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.albumicon);
+        String ostrArtistDrawable = uriArtist.toString();
+        String albumDrawable = uriArtist.toString();
+//
+//            addArtist("O.S.T.R.",ostrArtistDrawable);
+//            addArtist("Małpa",ostrArtistDrawable);
+//            addArtist("Edd Sheeran",ostrArtistDrawable);
+//
+//            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
+//            addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
+//            addAlbum("Edd Sheeran","Divide",getDrawable(R.drawable.albumicon));
 
-            addArtist("O.S.T.R.",getDrawable(R.drawable.artisticon));
-            addArtist("Małpa",getDrawable(R.drawable.artisticon));
-            addArtist("Edd Sheeran",getDrawable(R.drawable.artisticon));
+            String ostr [] = getResources().getStringArray(R.array.ostr);
+            String edSheeran [] = getResources().getStringArray(R.array.ed_sheeran_array);
+            String malpa [] = getResources().getStringArray(R.array.malpa);
+//
+        addArtist(ostr[0],ostrArtistDrawable);
+        addArtist(malpa[0],ostrArtistDrawable);
+        addArtist(edSheeran[0],ostrArtistDrawable);
 
-            addAlbum("Małpa","Pozwól mi nie mówić nic",getDrawable(R.drawable.albumicon));
-            addAlbum("O.S.T.R.","Tabasko",getDrawable(R.drawable.albumicon));
-            addAlbum("Edd Sheeran","Divide",getDrawable(R.drawable.albumicon));
-
-        String ostr [] = getResources().getStringArray(R.array.ostr);
-        String edSheeran [] = getResources().getStringArray(R.array.ed_sheeran_array);
-        String malpa [] = getResources().getStringArray(R.array.malpa);
-
-        addArtist(ostr[0],getDrawable(R.drawable.artisticon));
-        addArtist(malpa[0],getDrawable(R.drawable.artisticon));
-        addArtist(edSheeran[0],getDrawable(R.drawable.artisticon));
-
-        addAlbum(edSheeran[0],edSheeran[1],getDrawable(R.drawable.albumicon));
-        addAlbum(malpa[0],malpa[1],getDrawable(R.drawable.albumicon));
-        addAlbum(ostr[0],ostr[1],getDrawable(R.drawable.albumicon));
+        addAlbum(edSheeran[0],edSheeran[1],albumDrawable);
+        addAlbum(malpa[0],malpa[1],albumDrawable);
+        addAlbum(ostr[0],ostr[1],albumDrawable);
 
 
 
@@ -102,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addArtist(String artistName, Drawable drawable){
+    public void addArtist(String artistName, String drawable){
         artistArrayList.add(new Artist(artistName,drawable));
     }
-    public void addAlbum(String artistName, String album, Drawable drawable){
+    public void addAlbum(String artistName, String album, String drawable){
         if(findArtist(artistName) != null){
             Artist artist = findArtist(artistName);
             artist.addAlbum(album,drawable);

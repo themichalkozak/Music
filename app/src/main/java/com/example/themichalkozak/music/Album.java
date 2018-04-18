@@ -18,10 +18,10 @@ public class Album implements Parcelable{
 
     private String mArtistName;
     private String mAlbumName;
-    private Drawable drawable;
+    private String drawable;
     private ArrayList<Track> tracks = new ArrayList<Track>();
 
-    public Album(String mArtistName, String mAlbumName, Drawable drawable, ArrayList<Track> tracks) {
+    public Album(String mArtistName, String mAlbumName, String drawable, ArrayList<Track> tracks) {
         this.mArtistName = mArtistName;
         this.mAlbumName = mAlbumName;
         this.drawable = drawable;
@@ -39,7 +39,7 @@ public class Album implements Parcelable{
         return mAlbumName;
     }
 
-    public Drawable getDrawable() {
+    public String getDrawable() {
         return drawable;
     }
 
@@ -73,8 +73,7 @@ public class Album implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        dest.writeParcelable(bitmap,flags);
+        dest.writeString(drawable);
         dest.writeString(mAlbumName);
         dest.writeString(mArtistName);
         dest.writeTypedList(this.tracks);
@@ -84,8 +83,7 @@ public class Album implements Parcelable{
     }
 
     private Album(Parcel in){
-        Bitmap bitmap = in.readParcelable(getClass().getClassLoader());
-        drawable = new BitmapDrawable(bitmap);
+        this.drawable = in.readString();
         this.mAlbumName = in.readString();
         this.mArtistName = in.readString();
 

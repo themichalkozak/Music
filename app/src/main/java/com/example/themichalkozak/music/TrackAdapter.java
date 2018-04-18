@@ -1,6 +1,7 @@
 package com.example.themichalkozak.music;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -34,8 +35,11 @@ public class TrackAdapter extends ArrayAdapter<Track> {
 
         Track currentTrack = getItem(position);
 
+        String drawable = currentTrack.getDrawable();
+        Uri uri = Uri.parse(drawable);
+
         ImageView imageView = listItemView.findViewById(R.id.track_image);
-        imageView.setImageDrawable(currentTrack.getDrawable());
+        imageView.setImageURI(uri);
 
         TextView artistTextView = listItemView.findViewById(R.id.track_artist_name);
         artistTextView.setText(currentTrack.getmArtistName());
