@@ -21,7 +21,7 @@ public class Artist implements Parcelable {
     public Artist(String mName, String drawable) {
         this.mName = mName;
         this.drawable = drawable;
-        this.albums = new ArrayList<Album>();
+        this.albums = new ArrayList<>();
     }
 
     public final boolean addAlbum(String albumName, String drawable) {

@@ -30,6 +30,16 @@
     <string name="divide_track_5">Perfect</string>
     <string name="divide_track_6">Galway Girl</string>
     <string name="divide_track_7">Happier</string>
+    <string name="artist_drawable">artist_drawable</string>
+    <string name="label_artists">artists</string>
+    <string name="label_albums">albums</string>
+    <string name="label_tracks">tracks</string>
+    <string name="label_now_playing">now playing</string>
+    <string name="label_default_artist">default Artist</string>
+    <string name="label_defaulttrack">default Track</string>
+    <string name="album_drawable">album_drawable</string>
+    <string name="previous_button">previous_button</string>
+    <string name="next_button">next_button</string>
 
 
     <string-array name="ostr">

@@ -14,10 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/albumicon"/>
+        android:src="@drawable/albumicon"
+        android:contentDescription="@string/album_drawable"/>
 
     <TextView
-        android:text="default Artist"
+        android:text="@string/label_default_artist"
         android:layout_marginTop="30dp"
         android:id="@+id/artist_name_now_playing"
         android:layout_centerInParent="true"
@@ -26,7 +27,7 @@
         android:textColor="#fff"
         android:layout_height="wrap_content" />
     <TextView
-        android:text="default Track"
+        android:text="@string/label_defaulttrack"
         android:layout_marginTop="5dp"
         android:id="@+id/track_name-now_playing"
         android:textColor="#fff"
@@ -45,21 +46,23 @@
 
     <ImageView
         android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@id/pause_play_track"
+        android:layout_toStartOf="@id/pause_play_track"
         android:layout_below="@+id/seek_bar_now_playing"
         android:id="@+id/previous_track"
         android:background="@drawable/previous"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:contentDescription="@string/previous_button"/>
 
     <ImageView
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/pause_play_track"
+        android:layout_toEndOf="@id/pause_play_track"
         android:layout_below="@+id/seek_bar_now_playing"
         android:id="@+id/next_track"
         android:background="@drawable/next"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:contentDescription="@string/next_button"/>
 
     <Button
         android:background="@drawable/play"

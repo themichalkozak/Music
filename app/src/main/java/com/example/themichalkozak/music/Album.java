@@ -19,7 +19,7 @@ public class Album implements Parcelable{
     private String mArtistName;
     private String mAlbumName;
     private String drawable;
-    private ArrayList<Track> tracks = new ArrayList<Track>();
+    private ArrayList<Track> tracks = new ArrayList<>();
 
     public Album(String mArtistName, String mAlbumName, String drawable, ArrayList<Track> tracks) {
         this.mArtistName = mArtistName;

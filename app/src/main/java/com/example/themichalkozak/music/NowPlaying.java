@@ -5,18 +5,24 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class NowPlaying extends AppCompatActivity {
 
     ImageView albumImage;
     boolean play = true;
+    MediaPlayer mediaPlayer;
+    SeekBar seekBar;
+    int totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,7 @@ public class NowPlaying extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
+        mediaPlayer = MediaPlayer.create(this,R.raw.game_music);
 
         if (bundle != null) {
             TextView trackName = findViewById(R.id.track_name_now_playing);
@@ -39,6 +46,7 @@ public class NowPlaying extends AppCompatActivity {
             albumImage = findViewById(R.id.image_now_playing);
             albumImage.setImageURI(uri);
         }
+
         findViewById(R.id.pause_play_track).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,9 +54,11 @@ public class NowPlaying extends AppCompatActivity {
                 Button playPauseButton = findViewById(R.id.pause_play_track);
                 if(play){
                     playPauseButton.setBackground(getDrawable(R.drawable.pause));
+                    mediaPlayer.start();
                     play = false;
                 }else{
                     playPauseButton.setBackground(getDrawable(R.drawable.play));
+                    mediaPlayer.pause();
                     play=true;
                 }
 
@@ -56,8 +66,4 @@ public class NowPlaying extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 }
