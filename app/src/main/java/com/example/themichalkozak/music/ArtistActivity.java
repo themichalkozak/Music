@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -29,9 +30,15 @@ public class ArtistActivity extends AppCompatActivity {
         }
 
         ArtistAdapter artistAdapter = new ArtistAdapter(this,artists);
-
         ListView listView = findViewById(R.id.list_view);
-        listView.setAdapter(artistAdapter);
+        int isEmpty = artistAdapter.getCount();
+        Log.i("Artist Adapter Size","" + isEmpty);
+
+        if(isEmpty == artists.size()){
+
+            listView.setAdapter(artistAdapter);
+        }
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.themichalkozak.music.MainActivity"
+    android:background="@drawable/mainwalppaper">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+    <LinearLayout
+        android:id="@+id/main_heigher_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:background="@drawable/artist200x200"
+        android:id="@+id/artist_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:text="@string/label_artists"
+        android:textAllCaps="true"
+        android:layout_margin="10dp"
+        android:textColor="#fff"
+        android:gravity="bottom|center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/album_button"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="@drawable/album200x200"
+            android:gravity="bottom|center"
+            android:text="@string/label_albums"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+<LinearLayout
+    android:id="@+id/main_lower_layout"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/track_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/track200x200"
+        android:gravity="bottom|center"
+        android:text="@string/label_tracks"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/now_playing_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:background="@drawable/play200x200"
+        android:gravity="bottom|center"
+        android:text="@string/label_now_playing"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

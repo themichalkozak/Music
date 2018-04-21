@@ -1,47 +1,41 @@
 package com.example.themichalkozak.music;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final ArrayList<Artist> artistArrayList= new ArrayList<Artist>();
+    public  final ArrayList<Artist> artists = new ArrayList<Artist>();
 
-    public static final ArrayList<Album> albums = new ArrayList<Album>();
+    public  final ArrayList<Album> albums = new ArrayList<Album>();
 
-    public static final ArrayList<Track> tracks = new ArrayList<Track>();
+    public  final ArrayList<Track> tracks = new ArrayList<Track>();
 
-    int isCreated = 0;
+    boolean isCreated = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Uri uriArtist = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.artisticon);
         Uri uriAlbum = Uri.parse("android.resource://com.example.themichalkozak.music/" + R.drawable.albumicon);
         String ostrArtistDrawable = uriArtist.toString();
         String albumDrawable = uriAlbum.toString();
 
-            String ostr[] = getResources().getStringArray(R.array.ostr);
-            String edSheeran[] = getResources().getStringArray(R.array.ed_sheeran_array);
-            String malpa[] = getResources().getStringArray(R.array.malpa);
+        String ostr[] = getResources().getStringArray(R.array.ostr);
+        String edSheeran[] = getResources().getStringArray(R.array.ed_sheeran_array);
+        String malpa[] = getResources().getStringArray(R.array.malpa);
+
+
 
             addArtist(ostr[0], ostrArtistDrawable);
             addArtist(malpa[0], ostrArtistDrawable);
@@ -56,20 +50,18 @@ public class MainActivity extends AppCompatActivity {
                 addTrack(edSheeran[0], edSheeran[1], edSheeran[i]);
                 addTrack(malpa[0], malpa[1], malpa[i]);
                 addTrack(ostr[0], ostr[1], ostr[i]);
-
             }
 
-        createAlbumList();
-        createTrackList();
-
+            createAlbumList();
+            createTrackList();
 
         findViewById(R.id.artist_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent artistIntent = new Intent(MainActivity.this,ArtistActivity.class);
-                artistIntent.putParcelableArrayListExtra("ARTIST_ALL",artistArrayList);
+                Intent artistIntent = new Intent(MainActivity.this, ArtistActivity.class);
+                artistIntent.putParcelableArrayListExtra("ARTIST_ALL", artists);
                 startActivity(artistIntent);
             }
         });
@@ -78,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent albumIntent = new Intent(MainActivity.this,AlbumActivity.class);
-                albumIntent.putParcelableArrayListExtra("ALBUM_EXTRA",albums);
+                Intent albumIntent = new Intent(MainActivity.this, AlbumActivity.class);
+                albumIntent.putParcelableArrayListExtra("ALBUM_EXTRA", albums);
                 startActivity(albumIntent);
             }
         });
@@ -88,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent trackIntent = new Intent(MainActivity.this,TrackActivity.class);
-                trackIntent.putParcelableArrayListExtra("TRACK_EXTRA",tracks);
+                Intent trackIntent = new Intent(MainActivity.this, TrackActivity.class);
+                trackIntent.putParcelableArrayListExtra("TRACK_EXTRA", tracks);
                 startActivity(trackIntent);
             }
         });
@@ -102,53 +94,61 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addArtist(String artistName, String drawable){
-        isCreated = 1;
-        artistArrayList.add(new Artist(artistName,drawable));
+    public void addArtist(String artistName, String drawable) {
+                artists.add(new Artist(artistName, drawable));
+                Log.i("Artist arrayList size", "" + artists.size());
     }
-    public void addAlbum(String artistName, String album, String drawable){
-        if(findArtist(artistName) != null){
+
+    public void addAlbum(String artistName, String album, String drawable) {
+        if (findArtist(artistName) != null) {
             Artist artist = findArtist(artistName);
-            artist.addAlbum(album,drawable);
+            artist.addAlbum(album, drawable);
         }
     }
 
-    public void addTrack(String artistName, String albumName, String trackName){
-        if(findArtist(artistName) != null){
-            Artist artist= findArtist(artistName);
-            if(artist.findAlbum(albumName) != null){
+    public void addTrack(String artistName, String albumName, String trackName) {
+        if (findArtist(artistName) != null) {
+            Artist artist = findArtist(artistName);
+            if (artist.findAlbum(albumName) != null) {
                 Album album = artist.findAlbum(albumName);
-                if(album.addTrack(trackName)){
+                if (album.addTrack(trackName)) {
                 }
             }
 
         }
     }
-    private Artist findArtist(String name){
-        for (Artist checkedArtist : artistArrayList){
-            if(checkedArtist.getmName().equals(name)){
+
+    private Artist findArtist(String name) {
+        for (Artist checkedArtist : artists) {
+            if (checkedArtist.getmName().equals(name)) {
                 return checkedArtist;
             }
         }
         return null;
     }
 
-    public void createAlbumList(){
-        for(int i=0;i<artistArrayList.size();i++){
-            Artist artist = artistArrayList.get(i);
-            albums.addAll(artist.getAlbums());
-        }
-    }
+    public void createAlbumList() {
+        if (!isCreated) {
 
-    public void createTrackList(){
-        for(int i=0;i<artistArrayList.size();i++){
-            Artist artist = artistArrayList.get(i);
-            for(int j=0;j<artist.getAlbums().size();j++) {
-                Album album = artist.getAlbums().get(j);
-                tracks.addAll(album.getTracks());
+            for (int i = 0; i < artists.size(); i++) {
+                Artist artist = artists.get(i);
+                albums.addAll(artist.getAlbums());
             }
+            isCreated = true;
         }
     }
 
+    public void createTrackList() {
+        if (!isCreated) {
+            for (int i = 0; i < artists.size(); i++) {
+                Artist artist = artists.get(i);
+                for (int j = 0; j < artist.getAlbums().size(); j++) {
+                    Album album = artist.getAlbums().get(j);
+                    tracks.addAll(album.getTracks());
+                }
+            }
+            isCreated = true;
+        }
+    }
 
 }

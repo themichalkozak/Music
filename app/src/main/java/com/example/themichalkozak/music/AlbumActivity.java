@@ -18,6 +18,7 @@ public class AlbumActivity extends AppCompatActivity {
     ArrayList<Album> albums = new ArrayList<Album>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +35,10 @@ public class AlbumActivity extends AppCompatActivity {
             }
             this.setTitle(activityTitle);
         }
-
-
-
-
+        GridView gridView = findViewById(R.id.album_grid_view);
         AlbumAdapter albumAdapter = new AlbumAdapter(this, albums);
 
-        GridView gridView = findViewById(R.id.album_grid_view);
+
         gridView.setAdapter(albumAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,4 +56,5 @@ public class AlbumActivity extends AppCompatActivity {
         });
 
     }
+
 }

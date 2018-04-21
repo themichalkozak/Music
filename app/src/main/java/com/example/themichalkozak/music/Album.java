@@ -29,8 +29,6 @@ public class Album implements Parcelable{
     }
 
 
-
-
     public String getmArtistName() {
         return mArtistName;
     }
@@ -46,7 +44,6 @@ public class Album implements Parcelable{
     public ArrayList<Track> getTracks() {
         return tracks;
     }
-
 
 
     private Track findTrack(String trackName){
@@ -77,8 +74,6 @@ public class Album implements Parcelable{
         dest.writeString(mAlbumName);
         dest.writeString(mArtistName);
         dest.writeTypedList(this.tracks);
-
-
 
     }
 
