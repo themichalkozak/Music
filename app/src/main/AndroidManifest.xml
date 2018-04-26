@@ -17,13 +17,25 @@
             </intent-filter>
         </activity>
         <activity android:name=".ArtistActivity"
-            android:label="Artist List"/>
+            android:label="Artist List"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:value="com.example.themichalkozak.music.MainActivity"
+                android:name="android.support.PARENT_ACTIVITY"/>
+        </activity>
+
         <activity android:name=".AlbumActivity"
-            android:label="Album List"/>
+            android:label="Album List"
+            android:parentActivityName=".MainActivity">
+        </activity>
         <activity android:name=".TrackActivity"
-            android:label="Track List"/>
+            android:label="Track List"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
         <activity android:name=".NowPlaying"
-            android:label="Now playing">
+            android:label="Now playing"
+            android:parentActivityName=".MainActivity">
 
         </activity>
     </application>
